@@ -5,8 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="game.js" defer></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <script src="game.js"></script>
+    <div class="scores">
+      <div class ="playerscore">
+        Your Score
+        <div>0</div>
+      </div>
+      <div class ="computerscore">
+        Computer Score
+        <div>0</div>
+      </div>
+    </div>
+    <div class='result'></div>
+    <button id='rock'>Rock</button>
+    <button id='paper'>Paper</button>
+    <button id='scissors'>Scissors</button>
+    <div class="gameresult"></div>
+    <button class="playButton" style="visibility:hidden">Play Again</button>
   </body>
 </html>

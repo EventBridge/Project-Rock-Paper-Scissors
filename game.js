@@ -50,11 +50,6 @@ function game() {
     playerPoints = 0;
     computerPoints = 0;
 
-    // play 5 rounds
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(prompt('Rock, paper, scissors'), computerPlay()));
-    }
-
     if (playerPoints > computerPoints) {
         console.log('You win!');
     } else if (playerPoints < computerPoints) {
@@ -64,4 +59,37 @@ function game() {
     }
 }
 
-game();
+const selections = document.querySelectorAll('button');
+const result = document.querySelector('.result');
+const playerScore = document.querySelector('.playerscore div');
+const computerScore = document.querySelector('.computerscore div');
+const gameResult = document.querySelector('.gameresult');
+const playButton = document.querySelector('.playButton')
+
+selections.forEach((selection) => {
+    selection.addEventListener('click', () => {
+        if (playerPoints < 5 && computerPoints < 5) {
+            result.textContent = playRound(selection.id, computerPlay());
+            playerScore.textContent = playerPoints;
+            computerScore.textContent = computerPoints;
+            if (playerPoints === 5) {
+                gameResult.textContent = 'You win!';
+                playButton.style.visibility = 'visible';
+            } else if (computerPoints === 5) {
+                gameResult.textContent = 'You lose!';
+                playButton.style.visibility = 'visible';
+            }
+        }
+    })
+});
+
+playButton.addEventListener('click', () => {
+    // Reset game state
+    playerPoints = 0;
+    computerPoints = 0;
+    playerScore.textContent = '0';
+    computerScore.textContent = '0';
+    result.textContent = '';
+    gameResult.textContent = '';
+    playButton.style.visibility = 'hidden';
+});
